@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>4</title>
+    <style>
+      body {
+        background-color: #000000;
+        overflow: hidden;
+      }
+
+      .star {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: white;
+        clip-path: polygon(
+          50% 0%,
+          63% 38%,
+          100% 38%,
+          69% 62%,
+          82% 100%,
+          50% 77%,
+          18% 100%,
+          31% 62%,
+          0% 38%,
+          37% 38%
+        );
+        animation: shooting-star linear infinite;
+        transform-origin: center center;
+      }
+
+      .rainbow {
+        background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+        background-size: 1200% 100%;
+        animation: rainbow-background 3s ease-in-out infinite;
+      }
+
+      @keyframes shooting-star {
+        0% {
+          transform: translate(0, -200px);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(0, 1000px);
+          opacity: 0;
+        }
+      }
+
+      @keyframes rainbow-background {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .star:hover {
+        animation: water 0.5s linear infinite;
+      }
+
+      @keyframes water {
+        0% {
+          transform: scale(1);
+          filter: brightness(100%);
+        }
+        50% {
+          transform: scale(1.2);
+          filter: brightness(150%);
+        }
+        100% {
+          transform: scale(1);
+          filter: brightness(100%);
+        }
+      }
+
+      .cross {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border: 1px solid white;
+        transform: rotate(45deg);
+        animation: move-cross linear infinite;
+      }
+
+      @keyframes move-cross {
+        0% {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.5);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+      }
+
+      .text {
+        font-family: 'Noto Sans Hebrew', sans-serif;
+        color: white;
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text">
+      אתה לא יכול להימנע מהם השלכות של המעשים שלך
+    </div>
+    
+    <script>
+      function moveStar(star) {
+        let x = Math.floor(Math.random() * window.innerWidth);
+        let y = Math.floor(Math.random() * window.innerHeight);
+
+        // crear una animación para mover la estrella a la nueva posición
+        star.animate(
+          [
+            { transform: `translate(${star.offsetLeft}px, ${star.offsetTop}px)` },
+            { transform: `translate(${x}px, ${y}px)` },
+          ],
+          { duration: Math.floor(Math.random() * 5000) + 5000, iterations: Infinity }
+        );
+
+        star.style.left = `${x}px`;
+        star.style.top = `${y}px`;
+      }
+
+      const numStars = 150;
+      for (let i = 0; i < numStars; i++) {
+        let star = document.createElement("div");
+        star.classList.add("star");
+        star.classList.add("rainbow");
+        document.body.appendChild(star);
+
+        
+        moveStar(star);
+      }
+    </script>
+    <script>
+      function moveCross(cross) {
+        let x = Math.floor(Math.random() * window.innerWidth);
+        let y = Math.floor(Math.random() * window.innerHeight);
+
+        // crear una animación para mover la estrella a la nueva posición
+        cross.animate(
+          [
+            { transform: `translate(${cross.offsetLeft}px, ${cross.offsetTop}px)` },
+            { transform: `translate(${x}px, ${y}px)` },
+          ],
+          { duration: Math.floor(Math.random() * 5000) + 5000, iterations: Infinity }
+        );
+
+        cross.style.left = `${x}px`;
+        cross.style.top = `${y}px`;
+      }
+
+      const numCross = 150;
+      for (let i = 0; i < numCross; i++) {
+        let cross = document.createElement("div");
+        cross.classList.add("cross");
+        cross.classList.add("cross");
+        document.body.appendChild(cross);
+
+        
+        moveCross(cross);
+      }
+    </script>
+  </body>
+</html>
