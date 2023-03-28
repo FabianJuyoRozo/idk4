@@ -76,7 +76,6 @@
           filter: brightness(100%);
         }
       }
-
       .cross {
         position: absolute;
         width: 10px;
@@ -85,7 +84,6 @@
         transform: rotate(45deg);
         animation: move-cross linear infinite;
       }
-
       @keyframes move-cross {
         0% {
           opacity: 0;
@@ -100,7 +98,6 @@
           transform: scale(0.5);
         }
       }
-
       .text {
         font-family: 'Noto Sans Hebrew', sans-serif;
         color: white;
@@ -118,14 +115,11 @@
   <body>
     <div class="text">
       אתה לא יכול להימנע מהם השלכות של המעשים שלך
-    </div>
-    
+    </div> 
     <script>
       function moveStar(star) {
         let x = Math.floor(Math.random() * window.innerWidth);
         let y = Math.floor(Math.random() * window.innerHeight);
-
-        // crear una animación para mover la estrella a la nueva posición
         star.animate(
           [
             { transform: `translate(${star.offsetLeft}px, ${star.offsetTop}px)` },
@@ -174,24 +168,8 @@
         cross.classList.add("cross");
         document.body.appendChild(cross);
 
-        
         moveCross(cross);
       }
     </script>
-
-<script>
-  const textElement = document.querySelector(".text");
-  let originalText = textElement.textContent;
-  let newText = "♄ ♄ ♄ ♄ ♄ ♄ ♄ ♄ ♄ ♄ ♄ ♄";
-
-  setInterval(() => {
-    if (textElement.textContent === originalText) {
-      textElement.textContent = newText;
-    } else {
-      textElement.textContent = originalText;
-    }
-  }, 5000);
-</script>
-
   </body>
 </html>
