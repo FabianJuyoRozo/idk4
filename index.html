@@ -178,5 +178,18 @@
         moveCross(cross);
       }
     </script>
+    <script>
+  const textElement = document.querySelector(".text");
+  let originalText = textElement.textContent;
+  let newText = "♄ ♄ ♄ ♄ ♄ ♄ ♄ ♄ ♄ ♄ ♄ ♄";
+
+  setInterval(() => {
+    if (textElement.textContent === originalText) {
+      textElement.textContent = newText;
+    } else {
+      textElement.textContent = originalText;
+    }
+  }, 5000);
+</script>
   </body>
 </html>
